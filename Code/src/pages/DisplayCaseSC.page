@@ -1,0 +1,15 @@
+<apex:page sidebar="false" standardController="Case" renderAs="pdf">
+  <apex:pageBlock title="Case Information">
+      <apex:pageBlockSection title="Detail Information">
+          <apex:outputField value="{!Case.CaseNumber}"/>
+          <apex:outputField value="{!Case.Subject}"/>
+          <apex:outputField value="{!Case.Status}"/>
+          <apex:outputField value="{!Case.Priority}"/>
+          <apex:outputField value="{!Case.ContactId}"/>
+          <apex:outputField value="{!Case.ContactPhone}"/>
+          <apex:outputField value="{!Case.ContactEmail}"/>
+          <apex:outputField value="{!Case.AccountId}"/>
+          <apex:outputField value="{!Case.Account.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:page>

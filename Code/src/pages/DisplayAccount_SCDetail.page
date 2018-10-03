@@ -1,0 +1,5 @@
+<apex:page sidebar="false" standardController="Account">
+ <apex:detail relatedList="false" />
+ <apex:relatedList list="contacts"/>
+ <apex:relatedList list="Opportunities"/>
+</apex:page>

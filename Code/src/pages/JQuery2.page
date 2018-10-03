@@ -1,0 +1,23 @@
+<apex:page >
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+  
+  <script>
+       j$ = jQuery.noConflict();
+
+      j$(document).ready(function(){
+          j$("button").click(function(){
+        j$("#test").hide();
+        alert('Name is:'+j$("#nam").val());
+    });
+     });
+  </script>
+  <h2>This is a heading</h2>
+
+<p>This is a paragraph.</p>
+<p id="test">This is another paragraph.</p>
+
+<button>Click me</button><br/>
+Name:
+<input type="text" id="nam"/>
+</apex:page>

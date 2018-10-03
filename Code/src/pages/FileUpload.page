@@ -1,0 +1,6 @@
+<apex:page >
+  <apex:form >
+      <apex:inputFile value=""></apex:inputFile>
+  
+  </apex:form>
+</apex:page>

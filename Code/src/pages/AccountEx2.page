@@ -1,0 +1,80 @@
+<apex:page showHeader="true" standardController="Account" tabStyle="Account" extensions="AccountConEx2">
+    <script>
+    function setValue(val) {
+        alert('am here');
+        alert(val);
+        var msg = document.getElementById(val).val;
+        alert(msg);
+    }
+    
+    function getRatValue(msg) {
+    
+        alert('hey am --' + msg);
+        ratChange(msg);
+        alert('hey am done--' + msg);
+    }
+    
+    function setCheckBox(val) {
+        
+        var m = document.getElementById(val).value;
+        alert('Hi am here' + m);
+        
+        
+       
+
+    }
+    </script>
+    <apex:sectionHeader title="Account and Contact Details"/>    
+        <apex:form id="fm1">            
+            <apex:pageblock id="pb">
+                <apex:pageblockButtons location="bottom">
+                <apex:commandButton value="Submit" action="{!submitContact}"/>
+            </apex:pageblockButtons>
+                <apex:outputpanel id="out2">
+                <apex:pageblocksection title="Account Information" columns="2">
+                    <apex:outputField value="{!ac.name}"/>
+                    <apex:outputField value="{!ac.AccountNumber}"/>
+                    <apex:outputField value="{!ac.DunsNumber}"/>
+                    <apex:outputField value="{!ac.Phone}"/>
+                    <apex:OutputField value="{!ac.fax}"/>
+                    <apex:InputField value="{!ac.rating}" onchange="getRatValue(this.value)">
+                        <apex:actionFunction name="ratChange" action="{!ratingChange}" reRender="out2">  
+                            <apex:param name="ratID" value="{!ac.rating}" assignTo="{!ratValue}"/>                         
+                        </apex:actionFunction> 
+                    </apex:InputField>
+                    <apex:outputfield value="{!ac.AnnualRevenue}"/>
+                    <!--<apex:selectList label="Contact Type" value="{!conType}" size="1" >
+                        <apex:selectOptions value="{!conType}">
+                        </apex:selectOptions>                        
+                    </apex:selectList> -->
+                </apex:pageblocksection>
+                </apex:outputpanel>
+                <apex:outputpanel id="out1">
+                <apex:pageblocksection title="List of existing Contacts" id="pbs2">
+                   <apex:pageblockTable value="{!ac.contacts}" var="con" id="pbt1">
+                       <apex:column headerValue="Select" id="col1">
+                       <input type="checkbox" name = "chb" onclick= "javascript:setCheckBox('{!$Component.c1}')" id = "c1"/>
+                           <apex:actionsupport event="onclick" action="{!setChkBox}" rerender="out1">
+                               <apex:param name="chkB" value="{!con.id}" assignTo="{!selectedChkB}"/>
+                           </apex:actionsupport>
+                        </apex:column>
+                      <!-- <apex:column headerValue="Select" id="col1">                           
+                           <input type="radio" name="selectRadio" id="radID" onclick = "setValue(this.value)"/> 
+                               <apex:actionSupport event="onclick" action="{!getSelectedRecord}" reRender="out1">
+                                   <apex:param name="conID" value="{!con.id}" id="conID" assignTo="{!conIDSub}"/>
+                               </apex:actionSupport> 
+                       </apex:column> -->
+                       <apex:column value="{!con.id}"/>
+                       <apex:column value="{!con.name}"/>
+                       <apex:column value="{!con.AccountID}"/>
+                       <apex:column value="{!con.Phone}"/>
+                       <apex:column value="{!con.fax}"/>
+                       <apex:column value="{!con.email}"/>
+                       
+                    </apex:pageblockTable>                    
+                </apex:pageblocksection>
+               </apex:outputpanel>
+            </apex:pageblock>
+        </apex:form>
+  
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page controller="WrapperClassesCTRL" sidebar="false">
+  <apex:form >
+  <apex:pageBlock title="Select Accounts">
+      <apex:pageBlockButtons >
+          <apex:commandButton value="Process" action="{!processSelected}"/>
+      </apex:pageBlockButtons>
+      <apex:pageBlockTable value="{!accRecords}" var="wrRec">
+          <apex:column headerValue="Select">
+              <apex:inputCheckbox value="{!wrRec.isSelect}"/>
+          </apex:column>
+          <apex:column value="{!wrRec.acc.Name}"/>
+          <apex:column value="{!wrRec.acc.Phone}"/>
+          <apex:column value="{!wrRec.acc.AnnualRevenue}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+  <apex:pageBlock title="Selected Accounts">
+      <apex:pageBlockTable value="{!selectedAccounts}" var="ac">
+          <apex:column value="{!ac.Name}"/>
+          <apex:column value="{!ac.Phone}"/>
+          <apex:column value="{!ac.AnnualRevenue}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

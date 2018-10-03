@@ -1,0 +1,27 @@
+<apex:page standardController="Account" tabStyle="Account" extensions="AccountContEx1">
+    <apex:sectionHeader title="Accounts and Contact information"/>
+    <apex:form >     
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="bottom">
+                 <apex:commandButton value="Save" action="{!ContactAccSubmission}"/>
+                 <apex:commandButton value="Cancel" />
+             </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Account information">
+                <apex:outputfield value="{!ac.name}"/>
+                <apex:outputfield value="{!ac.AccountNumber}"/>
+                <apex:inputField value="{!ac.Phone}"/>
+                <apex:inputfield value="{!ac.fax}"/>                
+                <apex:inputfield value="{!ac.rating}" id="ratID"/>
+                <apex:inputfield value="{!ac.AccountSource}"/>
+            </apex:pageBlockSection>
+            <apex:pageblocksection title="Contact Information" id="pbs2" columns="2">
+                <apex:inputtext label="Contact FirstName" value="{!conFirstName}"/>
+                <apex:inputtext label="Contact LastName" value="{!conLastName}"/>
+                <apex:inputtext label="Phone" value="{!conPhone}"/>
+                <apex:inputtext label="email" value="{!conEmail}"/>
+                <apex:inputtextarea label="BillingAddress" value="{!conBillingAdd}"/>
+                <apex:inputtextarea label="ShippingAddress" value="{!conShippingAdd}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

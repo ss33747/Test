@@ -1,0 +1,18 @@
+<apex:page sidebar="false" controller="DisplayAccountCCController" tabStyle="Account">
+  <apex:slds />
+  <apex:pageBlock title="Account Information">
+      <apex:pageBlockSection title="Detail information">
+          <apex:outputField value="{!ac.Name}"/>    
+          <apex:outputField value="{!ac.Phone}"/>
+          <apex:outputField value="{!ac.Rating}"/>
+          <apex:outputField value="{!ac.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Address Information">
+          <apex:outputField value="{!ac.BillingStreet}"/>
+          <apex:outputField value="{!ac.BillingState}"/>
+          <apex:outputField value="{!ac.BillingPostalCode}"/>
+          <apex:outputField value="{!ac.BillingCountry}"/>
+      </apex:pageBlockSection>
+      
+  </apex:pageBlock>
+</apex:page>

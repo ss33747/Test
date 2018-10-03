@@ -1,0 +1,26 @@
+<apex:page standardController="Account" sidebar="false" extensions="DisplayAccountSCExtension">
+  <apex:pageBlock title="Account Information">
+      <apex:pageBlockSection title="Detail information">
+          <apex:outputField value="{!Account.Name}"/>    
+          <apex:outputField value="{!Account.Phone}"/>
+          <apex:outputField value="{!Account.Rating}"/>
+          <apex:outputField value="{!Account.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Address Information">
+          <apex:outputField value="{!Account.BillingStreet}"/>
+          <apex:outputField value="{!Account.BillingState}"/>
+          <apex:outputField value="{!Account.BillingPostalCode}"/>
+          <apex:outputField value="{!Account.BillingCountry}"/>
+      </apex:pageBlockSection>
+      
+  </apex:pageBlock>
+  
+  <apex:pageBlock title="Contacts">
+      <apex:pageBlockTable value="{!cons}" var="cn">
+          <apex:column value="{!cn.name}"/>
+          <apex:column value="{!cn.Email}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+  
+</apex:page>

@@ -1,0 +1,45 @@
+<apex:page sidebar="False" standardController="Contact" extensions="contactBreifCaseCtrl">
+    <apex:form >
+    <apex:pageblock title="Contact Breif Case">
+        <apex:pageblockSection title="Contact details" collapsible="False">
+            <apex:pageblocksectionItem >
+                <apex:outputLabel value="Contact Name"/>
+                <apex:inputtext value="{!Contact.name}"/>
+            </apex:pageblocksectionItem>
+            <apex:pageblocksectionItem >
+                <apex:outputLabel value="Contact Email"/>
+                <apex:inputField value="{!Contact.Email}"/>
+            </apex:pageblocksectionItem>
+            <apex:pageblocksectionItem >
+                <apex:outputLabel value="Contact title "/>
+                <apex:inputField value="{!Contact.title}"/>
+            </apex:pageblocksectionItem>
+            <apex:pageblockSectionItem >
+                <apex:outputLabel value="phone"/>
+                <apex:inputfield value="{!contact.phone}"/>
+            </apex:pageblockSectionItem>
+            <apex:pageblocksectionitem > 
+                <apex:outputLabel value="Mobile Phone"/>               
+                <apex:inputtext value="{!contact.MobilePhone}"/>
+            </apex:pageblocksectionitem> 
+            <apex:pageblocksectionitem >
+                <apex:outputLabel value="Account Name"/> 
+                <apex:inputfield value="{!contact.AccountID}"/>
+            </apex:pageblocksectionitem>
+            <apex:selectList label="Country" size="1" value="{!selectedCountry}" >
+                <apex:selectOptions value="{!countryList }"/>
+                <apex:actionSupport event="onchange" action="{!selectedValues}" />
+            </apex:selectList>
+            <apex:selectList label="State" id="st" rendered="{! Not CONTAINS(selectedCountry, 'None')}" size="1" value="{!selectedState}">
+                <apex:selectoptions value="{!stateList}"/>
+            </apex:selectList>
+            <apex:selectList label="City" id="ct" rendered="{! Not CONTAINS(selectedCountry, 'None') }" value="{!selectedCity}" size="1" >
+                <apex:selectoptions value="{!cityList}"/>
+            </apex:selectList>
+            
+        </apex:pageblockSection>
+        <apex:pageblocksection >
+        </apex:pageblocksection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page sidebar="false" controller="InsertAccountccController" tabStyle="Account">
+  <apex:form >
+  <apex:pageMessages ></apex:pageMessages>
+  <apex:pageBlock title="New Account">
+      <apex:pageBlockButtons >
+          <apex:commandButton value="Save" action="{!insertAccount}"/>
+          <apex:commandButton value="Cancel" />
+      </apex:pageBlockButtons>
+      <apex:pageBlockSection title="Account Information" collapsible="false">
+          <apex:inputField value="{!acc.Name}"/>
+          <apex:inputField value="{!acc.Phone}"/>
+          <apex:inputField value="{!acc.Rating}"/>
+          <apex:inputField value="{!acc.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Adress Information" collapsible="false">
+          <apex:inputField value="{!acc.BillingStreet}"/>
+          <apex:inputField value="{!acc.BillingState}"/>
+          <apex:inputField value="{!acc.BillingPostalCode}"/>
+          <apex:inputField value="{!acc.BillingCountry}"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

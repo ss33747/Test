@@ -1,0 +1,21 @@
+<apex:page sidebar="false" showHeader="false">
+  First Name : {!$User.FirstName}<br/>
+  Last Name : {!$User.LastName}<br/>
+  Email :{!$User.Email}<br/>
+  Id : {!$User.Id}<br/>
+  Today :{!today()}<br/>
+  <!--rendered-->
+  <apex:outputText rendered="{!$User.LastName='SFDC1'}">Hello Output Text</apex:outputText>
+  
+  <!--Page blocks -->
+  <apex:pageBlock title="Page Block 1">
+      <apex:pageBlockSection title="Section 1" collapsible="false">
+          I am Section 1
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Section 2">
+          I am Section 2
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  
+  
+</apex:page>

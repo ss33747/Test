@@ -1,0 +1,23 @@
+<apex:page controller="ActionSupportCTRL" sidebar="false">
+  <apex:form >
+  
+      <apex:pageBlock title="Search Accounts">
+          
+          <apex:pageBlockSection >
+              <apex:inputField value="{!acc.rating}">
+                  <apex:actionSupport action="{!fetchData}" event="onchange"/>
+              </apex:inputField>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="Accounts">
+          <apex:pageBlockTable value="{!accs}" var="ac">
+              <apex:column value="{!ac.Name}"/>
+              <apex:column value="{!ac.Rating}"/>
+          </apex:pageBlockTable>
+          
+      </apex:pageBlock>
+      
+      
+  </apex:form>
+</apex:page>

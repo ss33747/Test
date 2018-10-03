@@ -1,0 +1,16 @@
+<apex:page sidebar="false" controller="DisplayAllAccountsBtnCCController">
+  <apex:slds />
+  <apex:form >
+  <apex:pageBlock title="All Accounts">
+      <apex:pageBlockButtons >
+          <apex:commandButton value="Display Accounts" action="{!fetchAccounts}"/>
+      </apex:pageBlockButtons>
+     <apex:pageBlockTable value="{!accs}" var="ac">
+         <apex:column value="{!ac.Name}"/>
+         <apex:column value="{!ac.Phone}"/>
+         <apex:column value="{!ac.Rating}"/>
+         <apex:column value="{!ac.AnnualRevenue}"/>
+     </apex:pageBlockTable>
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

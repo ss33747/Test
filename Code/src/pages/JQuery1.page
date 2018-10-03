@@ -1,0 +1,17 @@
+<apex:page >
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+  
+  <script>
+       j$ = jQuery.noConflict();
+
+      j$(document).ready(function(){
+          j$("p").click(function(){
+        j$(this).hide();
+    });
+     });
+  </script>
+  <p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page standardController="Account" extensions="pdfExample" renderAs="{!render}">
+   <apex:form >
+   
+     <apex:sectionHeader title="Account Information"/>
+     <apex:pageBlock >
+         <apex:pageblockButtons location="Top">
+           <apex:commandButton value="generate PDF" action="{!generatePDF}"/>
+         </apex:pageblockButtons> 
+         <apex:pageblocksection title="Account Details" columns="1">
+             <apex:outputField value="{!ac.id}"/>
+             <apex:outputField value="{!ac.name}"/>
+             <apex:outputField value="{!ac.rating}"/>
+             <apex:outputField value="{!ac.billingcity}"/>
+             <apex:outputField value="{!ac.billingstate}"/>
+             <apex:outputField value="{!ac.billingcountry}"/>
+             <apex:outputField value="{!ac.phone}"/>
+             <apex:outputField value="{!ac.fax}"/>
+             <apex:outputField value="{!ac.accountnumber}"/>
+         <apex:pageblocksection collapsible="false">
+         <apex:pageblockTable value="{!ac.contacts}" var="con" summary="Contact information">
+             <apex:column value="{!con.id}"/>
+             <apex:column value="{!con.lastname}"/>
+             <apex:column value="{!con.firstname}"/>
+             <apex:column value="{!con.email}"/>
+             </apex:pageblockTable>
+         </apex:pageblocksection>       
+       </apex:pageblocksection>  
+     </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,31 @@
+<apex:page standardController="Account" sidebar="false">
+  <apex:pageBlock title="Account Information">
+      <apex:pageBlockSection title="Detail information">
+          <apex:outputField value="{!Account.Name}"/>    
+          <apex:outputField value="{!Account.Phone}"/>
+          <apex:outputField value="{!Account.Rating}"/>
+          <apex:outputField value="{!Account.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Address Information">
+          <apex:outputField value="{!Account.BillingStreet}"/>
+          <apex:outputField value="{!Account.BillingState}"/>
+          <apex:outputField value="{!Account.BillingPostalCode}"/>
+          <apex:outputField value="{!Account.BillingCountry}"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  <!--<apex:relatedList list="Contacts"/>-->
+  <apex:pageBlock title="Contacts">
+      <apex:pageBlockTable value="{!Account.contacts}" var="con">
+          <apex:column value="{!con.Name}"/>
+          <apex:column value="{!con.Email}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+  <apex:pageBlock title="Opprtunities">
+      <apex:pageBlockTable value="{!Account.Opportunities}" var="op">
+          <apex:column value="{!op.Name}"/>
+          <apex:column value="{!op.CloseDate}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+</apex:page>

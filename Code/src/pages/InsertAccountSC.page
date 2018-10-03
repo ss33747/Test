@@ -1,0 +1,23 @@
+<apex:page sidebar="false" standardController="Account">
+  <apex:slds />
+  <apex:form >
+  <apex:pageBlock title="New Account">
+      <apex:pageBlockButtons >
+          <apex:commandButton value="Save" action="{!save}"/>
+          <apex:commandButton value="Cancel" action="{!Cancel}"/>
+      </apex:pageBlockButtons>
+      <apex:pageBlockSection title="Account Information" collapsible="false">
+          <apex:inputField value="{!Account.Name}"/>
+          <apex:inputField value="{!Account.Phone}"/>
+          <apex:inputField value="{!Account.Rating}"/>
+          <apex:inputField value="{!Account.AnnualRevenue}"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockSection title="Adress Information" collapsible="false">
+          <apex:inputField value="{!Account.BillingStreet}"/>
+          <apex:inputField value="{!Account.BillingState}"/>
+          <apex:inputField value="{!Account.BillingPostalCode}"/>
+          <apex:inputField value="{!Account.BillingCountry}"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

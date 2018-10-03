@@ -1,0 +1,19 @@
+<apex:page sidebar="false" standardController="Merchandise__c">
+  <apex:pageBlock title="Merchandise Information">
+      <apex:pageBlockSection title="Detail Information">
+          <apex:outputField value="{!Merchandise__c.Name}"/>
+          <apex:outputField value="{!Merchandise__c.Price__c}"/>
+          <apex:outputField value="{!Merchandise__c.Quantity__c}"/>
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  <!--<apex:relatedList list="Line_Items__r"/>-->
+  <apex:pageBlock title="Line Items">
+      <apex:pageBlockTable value="{!Merchandise__c.Line_Items__r}" var="li">
+          <apex:column value="{!li.Name}"/>
+          <apex:column value="{!li.Quantity__c}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+  
+  
+  
+</apex:page>

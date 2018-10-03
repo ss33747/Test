@@ -1,0 +1,68 @@
+<apex:page sidebar="false" Controller="opportunityInsertCrtl" showChat="true" showHeader="true" tabStyle="opportunity">
+    <script>
+        function Validation() {
+            alert('am here');
+             alert(document.getElementByID('{!$Component.fm1.pb1.pbs1.hid}').value);
+            
+        }
+        function search(data) {
+        
+            alert('am here' + data)
+        }
+    </script>
+    <apex:form id="fm1">  
+      <apex:outputpanel id="op1">      
+        <apex:pageBlock title="Opportunity Information" Id="pb1">
+            <apex:pageblockButtons >
+               <apex:commandButton Value="Submit oppty" action="{!SubmitOppty}" onclick="Validation()"/>
+            </apex:pageblockButtons>
+            
+            <apex:pageblockSection title="Opportunity Detail Information" id="pbs1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Opportunity Name"/>
+                    <apex:inputField value="{!opp.name}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Opportunity Owner"/>
+                    <apex:inputField value="{!opp.owner.name}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Account"/>
+                    <apex:inputField value="{!opp.accountid}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Opportunity Close Date"/>
+                    <apex:inputField value="{!opp.CloseDate}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="Opportunity Expected Revenue"/>
+                    <apex:inputText value="{!opp.ExpectedRevenue}"/>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!opp.StageName}">
+                    <apex:actionSupport event="onchange" rerender="op1"/>
+               </apex:inputField>
+               <apex:pageBlockSectionItem >
+                    <apex:outputText value="Opportunity Probability"/>
+                    <apex:inputText value="{!opptyProbability }"/>                    
+                </apex:pageBlockSectionItem>
+                <apex:inputField label="Opportunity Amount" value="{!opp.Amount}" rendered="{!if(opp.StageName = 'Negotiation/Review', true, false)}"/>
+                <apex:inputfield id="hid" value="{!opp.account.Primary__c}"/>   
+                <apex:inputText id="inpt1" label="Global Account Search" onkeydown="search(this.value)"/>  
+
+            </apex:pageblockSection>    
+        </apex:pageBlock>
+       </apex:outputpanel>
+        <apex:pageblock title="Account Details">
+            <apex:pageblockSection columns="4">
+                <apex:pageBlockTable value="{!opp.Account}" var="ac">
+                    <apex:column value="{!ac.Name}"/>
+                    <apex:column value="{!ac.rating}"/>
+                    <apex:column value="{!ac.ownerID}"/>
+                </apex:pageBlockTable>
+            </apex:pageblockSection>
+        </apex:pageblock>
+        
+        
+    </apex:form>
+  
+</apex:page>

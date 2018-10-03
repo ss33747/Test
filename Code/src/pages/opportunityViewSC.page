@@ -1,0 +1,85 @@
+<apex:page sidebar="false" standardController="opportunity" extensions="opportunityViewSCCtrl">
+    <apex:form >
+    <script>
+        function primaryCheck(value) {
+           
+            var chk = value.checked;                      
+            CheckValidation(chk);
+                       
+        }
+    </script>
+       <apex:outputPanel id="op1">       
+        <apex:pageblock title="Opportunity details" id="pgblcok1">
+           <apex:pageblockButtons location="bottom" >
+               <apex:commandbutton value="Submit oppty to proceed" action="{!AddressDetails}"/>
+           </apex:pageblockButtons>
+            <apex:pageblockSection title="opportunity information" collapsible="false" id="pgblSec1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value=" Opportunity Name"></apex:outputLabel>
+                    <apex:inputField value="{!opp.Name}"/> 
+                </apex:pageBlockSectionItem>
+                <apex:pageblocksectionItem >
+                    <apex:outputlabel >Account Name</apex:outputlabel>
+                    <apex:inputfield value="{!opp.AccountID}"/>
+                </apex:pageblocksectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel >Probabilty</apex:outputlabel>    
+                    <apex:inputfield value="{!opp.probability}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel >Opportunity Owner</apex:outputlabel>    
+                    <apex:inputfield value="{!opp.ownerID}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel >Closed Date</apex:outputlabel>    
+                    <apex:inputfield value="{!opp.closeDate}"/>
+                </apex:pageBlockSectionItem>
+                <!--<apex:pageBlockSectionItem > 
+                    <apex:outputLabel >Opportunity Stage</apex:outputLabel> -->
+                <apex:inputField value="{!opp.StageName}">
+                    <apex:actionSupport event="onchange" rerender="op1"/>
+                </apex:inputField>
+                <apex:inputfield label="Opportunity Amount" value="{!opp.Amount}" rendered="{!if(opp.StageName = 'Closed Won', true, false)}"/>
+                <apex:inputCheckbox label="isPrimary" onclick="primaryCheck(this)" />   
+                    <apex:actionFunction name="CheckValidation" action="{!validation}" rerender="op2">
+                        <apex:param name="chk" value="chk" assignTo="{!isChecked}" />  
+                    </apex:actionFunction>    
+                <!--</apex:pageBlockSectionItem> -->
+            </apex:pageblockSection>
+            
+            <apex:outputpanel id="op2">
+            <apex:pageblockSection title="Address Details" id="PBSec2" rendered="{!if(isChecked , true, false)}">
+                <apex:pageblocksectionItem >
+                    <apex:outputlabel value="Ship To"/>
+                    <apex:inputText />
+                </apex:pageblocksectionItem>
+                <apex:pageblocksectionItem >
+                    <apex:outputlabel value="Shipping Address"/>
+                    <apex:inputTextarea />
+                </apex:pageblocksectionItem>
+                <apex:pageblocksectionItem >
+                    <apex:outputlabel value="Bill To"/>
+                    <apex:inputText />
+                </apex:pageblocksectionItem>
+                <apex:pageblocksectionItem >
+                    <apex:outputlabel value="Billing Address"/>
+                    <apex:inputTextarea />
+                </apex:pageblocksectionItem>
+            </apex:pageblockSection>
+            <apex:pageblockSection title="Opportunity Line Item Details" rendered="{!if(isChecked , true, false) && (opptyLineItem != null)}">
+                <apex:repeat value="{!opptyLineItem}" var="opptli">
+                     <apex:pageblockTable value="{!opptli.opportunitylineitems}" var="li"> <!-- PARENT TO CHILD RELATIONSHIP USE REPEAT TO TRAVERSE TO CHILD RECORDS -->
+                         <apex:column value="{!li.name}"/>
+                         <apex:column value="{!li.quantity}"/>
+                         <apex:column value="{!li.ProductCode}"/>
+                         <apex:column value="{!li.ListPrice}"/>
+                         <apex:column value="{!li.UnitPrice}"/>
+                     </apex:pageblockTable>
+                 </apex:repeat>
+             </apex:pageblockSection>
+           </apex:outputpanel>
+        </apex:pageblock>
+       </apex:outputPanel>  
+    </apex:form>
+    
+</apex:page>

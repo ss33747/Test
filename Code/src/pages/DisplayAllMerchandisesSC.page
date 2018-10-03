@@ -1,0 +1,9 @@
+<apex:page sidebar="false" standardController="Merchandise__c" recordSetVar="mers">
+  <apex:pageBlock title="All Merchandises">
+      <apex:pageBlockTable value="{!mers}" var="mr">
+          <apex:column value="{!mr.name}"/>
+          <apex:column value="{!mr.Price__c}"/>
+          <apex:column value="{!mr.Quantity__c}"/>
+      </apex:pageBlockTable>
+  </apex:pageBlock>
+</apex:page>

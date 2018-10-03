@@ -1,0 +1,32 @@
+<apex:page standardController="Account" recordSetVar="accounts">
+    <apex:form >
+    <apex:sectionHeader title="Account Details"/>
+        <apex:pageblock >
+            <apex:pageBlockButtons location="top">
+        <div style="float:left;font-weight:bold;">
+            <apex:outputLabel value="Select View:"/>
+            <apex:selectList value="{!filterId}" size="1">
+                <apex:actionSupport event="onchange" rerender="myTable"/>
+               <apex:selectOptions value="{!listviewoptions}"/>
+            </apex:selectList>
+        </div>
+        <div style="float:center;font-weight:bold;">
+            <apex:commandLink action="{!first}">First</apex:commandlink> &nbsp;&nbsp;
+            <apex:commandLink action="{!previous}">Previous</apex:commandlink> &nbsp;&nbsp;
+            <apex:commandLink action="{!next}">Next</apex:commandlink> &nbsp;&nbsp;
+            <apex:commandLink action="{!last}">Last</apex:commandlink> &nbsp;&nbsp;
+        </div>
+    </apex:pageBlockButtons>
+        
+            <apex:pageblockSection title="Account Information">
+                <apex:pageblocktable value="{!accounts}" var="ac" id="myTable">
+                    <apex:column value="{!ac.id}"/>
+                    <apex:column value="{!ac.name}"/>
+                    <apex:column value="{!ac.rating}"/>
+                    <apex:column value="{!ac.billingstate}"/>
+                    <apex:column value="{!ac.billingcountry}"/>
+                </apex:pageblocktable>
+            </apex:pageblockSection>
+        </apex:pageblock>  
+      </apex:form>
+</apex:page>

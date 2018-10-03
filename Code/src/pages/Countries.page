@@ -1,0 +1,7 @@
+<apex:page controller="CountriesCTRL" sidebar="false">
+  <apex:pageBlock title="Countries">
+      <apex:pageblockTable value="{!countries_lst}" var="cn">
+          <apex:column headerValue="Name" value="{!cn}"/>
+      </apex:pageblockTable>
+  </apex:pageBlock>
+</apex:page>

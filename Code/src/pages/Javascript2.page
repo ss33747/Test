@@ -1,0 +1,19 @@
+<apex:page sidebar="false">
+  <apex:includeScript value="{!$Resource.VFJavascript}" loadOnReady="true" />
+  
+  <apex:form id="frm">
+      <div id="msg">
+      
+      </div>
+  <apex:pageBlock id="pb">
+      <apex:commandButton value="Click Me!" onclick="myFun();" oncomplete="afterCOmplete();"/>
+      <apex:pageBlockSection id="pbs">
+          <apex:pageBlockSectionItem id="pbsi">
+          Name
+          <apex:inputText id="name"/>
+          </apex:pageBlockSectionItem>
+          
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

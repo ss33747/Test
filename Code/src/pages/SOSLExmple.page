@@ -1,0 +1,45 @@
+<apex:page sidebar="false" controller="SOSLExmpleCTRL">
+  <apex:form >
+      <apex:pageBlock title="Search Accounts,Contacts,Leads and Opportunities">
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Search" action="{!fetchData}"/>
+          </apex:pageBlockButtons>
+          <apex:pageBlockSection >
+              <apex:pageBlockSectionItem >
+              Enter :<apex:inputText value="{!searchKey}"/>
+              </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="Matched Accounts">
+          <apex:pageBlockTable value="{!accounts}" var="ac">
+              <apex:column value="{!ac.Name}"/>
+              <apex:column value="{!ac.Rating}"/>
+              <apex:column value="{!ac.AnnualRevenue}"/>
+          </apex:pageBlockTable>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="Matched Contacts">
+          <apex:pageBlockTable value="{!contacts}" var="con">
+              <apex:column value="{!con.Name}"/>
+              <apex:column value="{!con.Email}"/>         
+          </apex:pageBlockTable>
+     </apex:pageBlock>
+      
+      <apex:pageBlock title="Matched Leads">
+          <apex:pageBlockTable value="{!leads}" var="ld">
+              <apex:column value="{!ld.Name}"/>
+              <apex:column value="{!ld.Email}"/>
+          </apex:pageBlockTable>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="Matched Opportunities">
+          <apex:pageBlockTable value="{!Opportunities}" var="opp">
+              <apex:column value="{!opp.Name}"/>
+              <apex:column value="{!opp.StageName}"/>
+              <apex:column value="{!opp.CloseDate}"/>
+          </apex:pageBlockTable>
+      </apex:pageBlock>
+      
+  </apex:form>
+</apex:page>

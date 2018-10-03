@@ -1,0 +1,28 @@
+<apex:page controller="ActionFunctionCTRL" sidebar="false">
+  <script>
+      function acJSFun(){
+          alert('function called..');
+          //call the action function
+          actFun();
+      }
+  </script>
+  <apex:form >
+  <apex:actionFunction name="actFun" action="{!fetchData}"/>
+      <apex:pageBlock title="Search Accounts">
+          
+          <apex:pageBlockSection >
+              <apex:inputField value="{!acc.rating}" onchange="acJSFun();"/>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="Accounts">
+          <apex:pageBlockTable value="{!accs}" var="ac">
+              <apex:column value="{!ac.Name}"/>
+              <apex:column value="{!ac.Rating}"/>
+          </apex:pageBlockTable>
+          
+      </apex:pageBlock>
+      
+      
+  </apex:form>
+</apex:page>

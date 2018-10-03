@@ -1,0 +1,12 @@
+<apex:page sidebar="false" controller="ActionPollerCTRL">
+  
+  <apex:form id="frm">
+  
+  <apex:actionRegion >
+  <apex:inputFile value=""></apex:inputFile><br/>
+  Count is:{!count}<br/>
+  {!tdt}
+      <apex:actionPoller action="{!incrementCounter}" interval="5" reRender="frm"/>
+      </apex:actionRegion>
+  </apex:form>
+</apex:page>

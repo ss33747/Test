@@ -1,0 +1,25 @@
+<apex:page sidebar="false" controller="RestCallout1Controller">
+  <apex:form >
+      <apex:commandButton value="Make Callout" action="{!makeCallout}"/><br/>
+      <apex:pageBlock title="Response from Webservice">
+          <apex:pageBlockSection >
+              <apex:pageBlockSectionItem >
+                  User Id
+                  <apex:outputText value="{!responseBdy.userId1}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+                  Id
+                  <apex:outputText value="{!responseBdy.Id}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+                  Title
+                  <apex:outputText value="{!responseBdy.title}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+                  Body
+                  <apex:outputText value="{!responseBdy.body}"/>
+              </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

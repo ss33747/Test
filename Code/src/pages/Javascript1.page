@@ -1,0 +1,21 @@
+<apex:page sidebar="false">
+  Hello Page
+  <script>
+      //alert('Hello Javascript');
+      function myFun(){
+          var name='SFDC';
+          alert('function calling..'); 
+          //Read name value from input text
+          var ipt = document.getElementById('name');
+          alert('ipt>>'+ipt);
+          if(ipt.value){
+              alert('Name entered:'+ipt.value);
+          }else{
+              alert('Please enter Name.');
+          }
+      }
+  </script>
+  Hello End page<br/>
+  Name:<input type="text" id="name"/>
+  <input type="submit" value="Click Me!!!" onclick="myFun();"/>
+</apex:page>

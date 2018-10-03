@@ -1,0 +1,40 @@
+<apex:page standardController="Account" extensions="repeatEx">
+    <apex:form >
+        <script>
+            function deleteContact(val) {
+                alert('hi');
+                alert(val);
+            }
+        </script>
+    <apex:pageblock >
+        <apex:sectionHeader title="Account and Contact details"/>
+            <apex:repeat value="{!acc}" var="ac">
+                <apex:pageblocksection title="Account Information for {!ac.name}" columns="2" >
+                    <apex:inputfield value="{!ac.name}"/>
+                    <apex:inputfield value="{!ac.rating}"/>
+                    <apex:inputfield value="{!ac.phone}"/>
+                    <apex:inputfield value="{!ac.AccountNumber}"/>
+                    <apex:pageblockTable value="{!ac.contacts}" var="con">
+                        <apex:column headerValue="Contact ID">
+                            <!--<apex:commandLink value="/{!con.id}">
+                                "{!con.id}" 
+                            </apex:commandlink> -->
+                            <apex:commandLink action="{!URLFOR($Action.contact.View, con.id)}" value="{!con.id}"/>
+                        </apex:column>                            
+                        <apex:column value="{!con.lastname}"/>
+                        <apex:column value="{!con.Accountid}"/>
+                        <apex:column value="{!con.Email}"/>
+                        <apex:column headerValue="Delete records">
+                            <apex:inputcheckbox >
+                                <apex:commandLink value="Delete">
+                                    <apex:actionsupport event="onclick" action="{!conRecord}">
+                                    </apex:actionsupport>
+                                </apex:commandLink>
+                            </apex:inputcheckbox>    
+                        </apex:column>
+                    </apex:pageblockTable>
+                </apex:pageblocksection>
+            </apex:repeat>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
