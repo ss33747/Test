@@ -34,7 +34,7 @@ global class AccountService{
         if(accId!=null && accId!=''){
             try{
                 Account acc = [Select id,name,rating,phone,AnnualRevenue,BillingCountry from Account where id=:accId];
-                
+                system.debug();
                 acc.rating=updReqData.aRating;
                 acc.phone=updReqData.aphone;
                 acc.AnnualRevenue=updReqData.annualRevenue;
