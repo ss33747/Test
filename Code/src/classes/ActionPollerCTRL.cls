@@ -9,6 +9,6 @@ public class ActionPollerCTRL {
     public void incrementCounter(){
         count++;
         tdt= system.now();
-        system.debug();
+        system.debug('testing');
     }
 }
